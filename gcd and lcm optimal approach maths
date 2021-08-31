@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int main() {
+   long long int A,B,lcm,gcd,temp,MAX,MIN;
+		cin>>A>>B;
+		MAX=max(A,B);
+		MIN=min(A,B);
+		if(MIN==0)
+				gcd=MAX;
+		else{
+		while(MAX%MIN!=0)
+		{
+					 temp=MAX;
+				MAX=MIN;
+				MIN=temp%MIN;
+		}
+				gcd=MIN;
+		}
+		
+		
+		cout<<gcd<<" ";
+		 lcm=(A*B)/gcd;
+		cout<<lcm;
+    return 0;
+}
