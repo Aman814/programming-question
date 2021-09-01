@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int p_max[height.size()];
+        int s_max[height.size()];
+        int amount=0;
+        p_max[0]=height[0];
+        for(int i=1;i<height.size();i++)
+        {
+            p_max[i]=max(p_max[i-1],height[i]);
+        }
+        s_max[height.size()-1]=height[height.size()-1];
+         for(int i=height.size()-2;i>=0;i--)
+        {
+            s_max[i]=max(s_max[i+1],height[i]);
+        }
+        
+        for(int i=0;i<=height.size()-1;i++)
+        {
+            int d=min(p_max[i],s_max[i]);
+                if(d>height[i])
+                amount+=(d-height[i]);   
+        }
+        return amount;
+    }
+};
