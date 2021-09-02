@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+int main() {
+   long long int t,n,a,b,k,maxi,mini,gcd,lcm;
+		cin>>t;
+		while(t--)
+		{
+				cin>>n>>a>>b>>k;
+				maxi=max(a,b);
+				mini=min(a,b);
+				if(mini==0)
+					gcd=maxi;	
+				while(maxi%mini!=0)
+				{
+						long long int temp=maxi;
+						maxi=mini;
+						mini=temp%mini;
+				}
+				gcd=mini;
+				lcm=(a*b)/gcd;
+				long long int ans=n/a+n/b-2*n/lcm;
+					if(ans>=k)
+						cout<<"Win"<<"\n";
+				
+						else
+						cout<<"Lose"<<"\n";		
+								
+		}
+    return 0;
+}
