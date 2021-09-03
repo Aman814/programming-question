@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+long long int GCD(long long int a,long long int b)
+{
+		long long int maxi=max(a,b);
+		long long int mini=min(a,b);
+		if(mini==0)
+				return maxi;
+		while(maxi%mini!=0)
+		{
+				long long int temp=maxi;
+				maxi=mini;
+				mini=temp%mini;
+		}
+		return mini;
+}
+int main() {
+    long long int t,i,gcd;
+		scanf("%lld",&t);
+		long long int n;
+		long long int sequence[n+1];
+		while(t--)
+		{
+				scanf("%lld",&n);
+						for(i=0;i<n;i++)
+						{
+								scanf("%lld",&sequence[i]);
+						}
+				gcd=GCD(sequence[0],sequence[1]);
+				for(i=2;i<n;i++)
+				{
+						gcd=GCD(gcd,sequence[i]);
+				}
+				if(gcd==1)
+						printf("1");
+				else
+						printf("0");
+				printf("\n");
+				
+		}
+    return 0;
+}
