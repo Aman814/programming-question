@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+long long int compute[1000001];
+long long int primes[1000001];
+
+void isprimes()
+{
+	for(long long int i=1;i<1000001;i++)
+	{
+		primes[i]=1;
+			
+	}
+		primes[1]=0;
+		for(long long int i=2;i*i<1000001;i++)
+		{
+				if(primes[i]==1)
+				{
+						for(long long int j=i;i*j<1000001;j++)
+						{
+								primes[i*j]=0;
+						}
+				}
+		}
+}
+
+
+int main()
+{
+		long long int t,n;
+		cin>>t;
+		long long int i;
+		isprimes();
+	compute[1]=0;
+	for(i=2;i<1000001;i++)
+	{
+	if(primes[i]==1)
+	{
+		compute[i]=compute[i-1]+1;
+	}
+			else
+				compute[i]=compute[i-1]	;
+	}
+		while(t--)
+		{
+				cin>>n;
+				cout<<compute[n]<<"\n";
+		}
+}
