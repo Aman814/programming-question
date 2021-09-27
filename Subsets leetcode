@@ -1,0 +1,30 @@
+class Solution {
+     vector<vector<int>> ans;
+public:
+   
+    
+    void pass(vector<int>& nums,int n,int i,vector<int> &a,int size)
+    {
+        if(i==n)
+        {
+            vector<int> temp;
+            for(int j=0;j<size;j++)
+            {
+                temp.push_back(a[j]);
+            }
+            ans.push_back(temp);
+            return ;
+        }
+        a[size]=nums[i];
+        pass(nums,n,i+1,a,size+1);
+        pass(nums,n,i+1,a,size);
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        
+        vector<int> a(nums.size());
+        int size=0;
+        int n=nums.size();
+        pass(nums,n,0,a,size);
+        return ans;
+    }
+};
