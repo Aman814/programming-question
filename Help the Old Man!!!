@@ -1,0 +1,30 @@
+class Solution{
+public:
+        vector<int> v;
+void towerofhanoi(int N,int a,int b,int c,int n,int &i)
+        {
+        
+            if(N>0){
+            towerofhanoi(N-1,a,c,b,n,i);
+            i++;
+            if(i==n)
+            {
+                v.push_back(a);
+                v.push_back(c);
+                return ;
+                
+            }
+            towerofhanoi(N-1,b,a,c,n,i);
+            }
+            
+        }
+        vector<int> shiftPile(int N, int n){
+       int a,b,c;
+       a=1;
+       b=2;
+       c=3;
+        int i=0;
+       towerofhanoi(N,a,b,c,n,i);
+       return v;
+    }
+};
