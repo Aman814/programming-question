@@ -1,0 +1,33 @@
+class Solution {
+     vector<vector<int>> ans;
+public:
+   
+    
+    void pass(vector<int>& nums,int n,int i,char a[],int size)
+    {
+        if(i==n)
+        {
+            vector<int> temp;
+            for(int j=0;j<size;j++)
+            {
+                if(a[j]=='1')
+                    temp.push_back(nums[j]);
+            }
+            ans.push_back(temp);
+            return ;
+        }
+        a[size]='0';
+        pass(nums,n,i+1,a,size+1);
+        a[size]='1';
+        pass(nums,n,i+1,a,size+1);
+        
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        
+        char a[nums.size()];
+        int size=0;
+        int n=nums.size();
+        pass(nums,n,0,a,size);
+        return ans;
+    }
+};
