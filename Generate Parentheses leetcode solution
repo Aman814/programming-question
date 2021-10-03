@@ -1,0 +1,47 @@
+class Solution {
+    vector<string> v;
+public:
+    void createParent(int l,int r,int &n,int i,char a[])
+    {
+        if(i==2*n)
+        {
+            string s;
+            for(int j=0;j<i;j++)
+            {
+                s+=a[j];
+            }
+            v.push_back(s);
+            return ;
+        }
+        if(l==r)
+        {
+            a[i]='(';
+            createParent(l+1,r,n,i+1,a);
+                
+        }
+        else
+        {
+            if(l==n)
+            {
+                a[i]=')';
+            createParent(l,r+1,n,i+1,a);
+            }
+            else if(l>r)
+            {
+                a[i]='(';
+            createParent(l+1,r,n,i+1,a);
+                a[i]=')';
+            createParent(l,r+1,n,i+1,a);
+            }
+        }
+    }
+    
+    vector<string> generateParenthesis(int n) {
+        int l=0;
+        int r=0;
+        int i=0;
+        char a[2*n+1];
+        createParent(l,r,n,i,a);
+        return v;
+    }
+};
